@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "dockerfileLines": [
-    "FROM ruby:3-alpine",
+    "FROM ruby:2.7-alpine",
     "RUN mkdir -p /usr/src/app",
     "COPY ./ /usr/src/app",
     "WORKDIR /usr/src/app",
