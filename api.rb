@@ -33,7 +33,7 @@ class MyServlet < WEBrick::HTTPServlet::AbstractServlet
   end
 end
 
-server = WEBrick::HTTPServer.new(:Port => 1234)
+server = WEBrick::HTTPServer.new(:Port => 80)
 
 server.mount "/", MyServlet
 
