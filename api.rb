@@ -36,7 +36,7 @@ get '/estimate' do
 end
 
 get '/*' do
-  status 400
+  status 404
   'nothing on this path'
 end
 
