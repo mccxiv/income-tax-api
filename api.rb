@@ -8,7 +8,7 @@ class MyServlet < WEBrick::HTTPServlet::AbstractServlet
     status = 200
 
     case request.path
-      when "/calculate"
+      when "/estimate"
         country = request.query["country"]
         yearly = request.query["yearly"]
         if country && yearly
@@ -34,7 +34,7 @@ class MyServlet < WEBrick::HTTPServlet::AbstractServlet
       when "/healthcheck"
         result = "ok"
       when '/'
-        result = "API is running. Try /calculate"
+        result = "API is running. Try /estimate"
       else
         status = 404
         result = "no such path"
