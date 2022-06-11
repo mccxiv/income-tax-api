@@ -1,6 +1,7 @@
 ## API for calculating income tax in every country
 
-Hey friends, this is just a lil wrapper that exposes the excellent Ruby gem [`income-tax`](https://github.com/rkh/income-tax) as a web API. I did not write any of the tax logic.
+Hey friends, this is just a lil wrapper that exposes the excellent Ruby gem [`income-tax`](https://github.com/rkh/income-tax) as a web API.  
+I did not write any of the tax logic.
 
 ### Usage
 Endpoint: `/calculate`
