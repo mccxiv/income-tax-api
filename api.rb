@@ -1,3 +1,4 @@
+require 'json'
 require 'webrick'
 require 'income-tax'
 
@@ -7,12 +8,21 @@ class MyServlet < WEBrick::HTTPServlet::AbstractServlet
     status = 200
 
     case request.path
-      when "/effective-rate"
+      when "/calculate"
         country = request.query["country"]
         yearly = request.query["yearly"]
         if country && yearly
           begin
-            result = IncomeTax.new(country, yearly).to_f
+            income_tax = IncomeTax.new(country, yearly)
+            result_hash = { 
+              :gross_income => income_tax.gross_income,
+              :net_income => income_tax.net_income.to_f,
+              :taxes => income_tax.taxes.to_f,
+              :rate => income_tax.to_f,
+              :rate_string => income_tax.rate
+            }
+            puts result_hash
+            result = JSON.pretty_generate(result_hash)
           rescue => e
             status = 500
             result = e.message
@@ -33,7 +43,7 @@ class MyServlet < WEBrick::HTTPServlet::AbstractServlet
   end
 end
 
-server = WEBrick::HTTPServer.new(:Port => 80)
+server = WEBrick::HTTPServer.new(:Port => (ENV['PORT'] or 3230))
 
 server.mount "/", MyServlet
 
