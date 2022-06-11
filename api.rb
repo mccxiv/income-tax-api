@@ -33,6 +33,8 @@ class MyServlet < WEBrick::HTTPServlet::AbstractServlet
         end
       when "/healthcheck"
         result = "ok"
+      when '/'
+        result = "API is running. Try /calculate"
       else
         status = 404
         result = "no such path"
