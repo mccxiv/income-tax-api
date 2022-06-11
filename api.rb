@@ -3,6 +3,7 @@ require 'sinatra'
 require 'income-tax'
 
 set :port, (ENV['PORT'] or 3230)
+set :bind, '0.0.0.0'
 
 get '/' do
   'API is running. Try /estimate'
