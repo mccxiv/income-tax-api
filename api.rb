@@ -51,4 +51,6 @@ trap("INT") {
   server.shutdown
 }
 
+puts "Starting API server 🚀"
+
 server.start
